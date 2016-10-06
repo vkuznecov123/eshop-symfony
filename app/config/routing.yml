@@ -1,0 +1,20 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+eshop_main:
+    path:      /
+    defaults:  { _controller: AppBundle:Eshop:main }
+
+eshop_cat:
+    path:      /{cat}
+    defaults:  { _controller: AppBundle:Eshop:cat }
+    requirements:
+        cat: '\d+'
+
+eshop_good:
+    path:      /{cat}/{good}
+    defaults:  { _controller: AppBundle:Eshop:good }
+    requirements:
+        cat: '\d+'
+        good: '\d+'
