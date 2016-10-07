@@ -12,26 +12,33 @@ class EshopController
      */
     public function mainAction()
     {
-        $tree = getTree();
+        $model = new \Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
+        $model->connectDB();
+
+        $tree = $model->getTree();
         $id = $tree['id'];
         $renderAr = [ 'tree' => $tree ]; // массив данных для отправки шаблонизатору
-        $renderAr['goods'] = getMainGoods(); // добавляем массив товаров для главной страницы
+        $renderAr['goods'] = $model->getMainGoods(); // добавляем массив товаров для главной страницы
 
-        $pathAndSubcats = getPathSubcats($tree, $id);          // добавляем путь к категории и подкатегории
+        $pathAndSubcats = $model->getPathSubcats($tree, $id);          // добавляем путь к категории и подкатегории
         $renderAr['path'] = $pathAndSubcats['path'];           // для меню на странице
         $renderAr['subcats'] = $pathAndSubcats['subcats'];
 
-        return $this->render('eshop/main_goods.html.twig', $renderAr);
+        // return $this->render('eshop/main_goods.html.twig', $renderAr);
+        print_r($tree);
     }
 
     public function catAction($cat)
     {
-        $tree = getTree();
+        $model = new \Model\Model('localhost','eshop','eshopSymfony','pa$$w0rd');
+        $model->connectDB();
+
+        $tree = $model->getTree();
         $id = $cat;
         $renderAr = [ 'tree' => $tree ]; // массив данных для отправки шаблонизатору
-        $renderAr['goods'] = getGoods($id); // добавляем массив товаров из текущей категории
+        $renderAr['goods'] = $model->getGoods($id); // добавляем массив товаров из текущей категории
 
-        $pathAndSubcats = getPathSubcats($tree, $id);          // добавляем путь к категории и подкатегории
+        $pathAndSubcats = $model->getPathSubcats($tree, $id);          // добавляем путь к категории и подкатегории
         $renderAr['path'] = $pathAndSubcats['path'];           // для меню на странице
         $renderAr['subcats'] = $pathAndSubcats['subcats'];
 
@@ -40,12 +47,15 @@ class EshopController
 
     public function goodAction($cat,$good)
     {
-        $tree = getTree();
+        $model = new \Model\Model('localhost','eshop','eshopSymfony','pa$$w0rd');
+        $model->connectDB();
+
+        $tree = $model->getTree();
         $id = $cat;
         $renderAr = [ 'tree' => $tree ]; // массив данных для отправки шаблонизатору
-        $renderAr['goodFull'] = getGoodFull($good);    // добавляем массив с описанием товара
+        $renderAr['goodFull'] = $model->getGoodFull($good);    // добавляем массив с описанием товара
 
-        $pathAndSubcats = getPathSubcats($tree, $id);          // добавляем путь к категории
+        $pathAndSubcats = $model->getPathSubcats($tree, $id, $renderAr['goodFull']);          // добавляем путь к категории
         $renderAr['path'] = $pathAndSubcats['path'];           // для меню на странице
 
         return $this->render('eshop/good_full.html.twig', $renderAr);
