@@ -1,0 +1,6 @@
+{# Подкатегории в текущей категории #}
+<ul class="pager pageMenu">
+    {% for el in subcats %}
+        <li><a href="{{ path('eshop_cat', {'cat': el['id']}) }}">{{ el['name'] }}</a></li>
+    {% endfor %}
+</ul>

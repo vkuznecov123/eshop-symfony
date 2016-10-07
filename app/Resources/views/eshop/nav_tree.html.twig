@@ -1,0 +1,20 @@
+{# Шаблон для выпадающего меню #}
+
+<ul class="nav dropdown-menu rightMenu">
+    {# Составляем меню из вложенных массивов (исключая имя и ссылку) #}
+    {% for el in tree if el is iterable %}
+        <li>
+            {# Если есть подменю - показываем стрелку #}
+            {% if el[0] is defined %}
+                <a href="{{ path('eshop_cat', {'cat': el['id']}) }}" class="menuElement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="-1">
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                    <span class="menuLabel">{{ el['name'] }}</span>
+                </a>
+                {% include 'eshop/nav_tree.html.twig' with {'tree': el} %}
+            {% else %}
+                <a href="{{ path('eshop_cat', {'cat': el['id']}) }}" class="menuElement" tabindex="-1">{{ el['name'] }}</a>
+                <!--класс menuElement - для скрывания открытых подменю-->
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

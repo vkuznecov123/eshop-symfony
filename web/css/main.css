@@ -1,0 +1,98 @@
+/* Настройки для выпадающего меню*/
+.rightMenu {
+    position:absolute;
+    float:right;
+    top: 0;
+    left: 100%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+}
+
+/* Настройки для контейнера выпадающего меню*/
+.navContainer {
+    padding: 0;
+    z-index: 1;
+}
+
+/* Позиция фиксации меню при залипании*/
+.navContainer .affix {
+    top: 20px;
+}
+
+/* Выравнивание по правому краю для стрелки в меню */
+.glyphicon-menu-right {
+
+     float: right;
+     top: 3px;
+}
+
+/*отступ в подменю для стрелки*/
+.menuLabel {
+    margin-right: 20px;
+}
+
+/*выравнивание навигации на странице по левому краю*/
+.pageMenu {
+    text-align: left;
+}
+/*отступы для содержимого страницы*/
+#mainPart {
+    padding: 0px 0px 0px 30px;
+}
+
+/* Настройки для отображения товаров в категории */
+.myThumbContainer{
+    margin: 0px;
+}
+
+.myThumb{
+    min-width: 220px;
+    max-width: 220px;
+    margin: 16px 8px;
+    padding: 8px 0px;
+    float: left;
+}
+
+.myThumb img {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+.myThumb .caption {
+    min-height: 110px;
+    max-height: 110px;
+}
+
+.myThumb h3 {
+    min-height: 50px;
+    max-height: 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.myThumb .price {
+    display: inline-block;
+    min-width: 100px;
+}
+
+.myThumb span {
+    font-size: 16px;
+
+}
+
+.myThumb .absent {
+    display: inline-block;
+    padding-top: 4px;
+}
+
+/* Настройки для отображения характеристик товара */
+
+#goodRow {
+    margin: 0px;
+}
+
+.goodContainer img{
+    max-width:100%;
+    padding: 20px;
+}

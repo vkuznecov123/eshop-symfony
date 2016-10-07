@@ -1,0 +1,22 @@
+{# Шаблон страницы показа товара #}
+{% extends 'eshop/base.html.twig' %}
+
+{%  block sideNav %}
+    <div class="col-md-2 col-sm-3 hidden-xs dropdown navContainer">
+        <nav role="navigation" data-spy="affix" data-offset-top="120" id="fix">
+
+            {% include "eshop/side_nav.html.twig" %}
+
+        </nav>
+    </div>
+{% endblock %}
+
+{% block pageNav %}
+    <nav role="navigation">
+        {% include "eshop/page_nav_path.html.twig" %}
+    </nav>
+{% endblock %}
+
+ {% block content %}
+     {% include "eshop/good_full.html.twig" %}
+ {% endblock %}

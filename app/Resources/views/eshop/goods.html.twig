@@ -1,0 +1,30 @@
+{# Шаблон вывода товаров в категории #}
+
+<div class="row myThumbContainer">
+    {# Перебираем все товары в массиве goods #}
+    {% for el in goods %}
+
+        <div class="thumbnail myThumb">
+            <!-- Ссылка на товар составляется из url + id текущей категории + id товара (good) -->
+            <a href="{{ path('eshop_good', {'cat': currentId, 'good': el['id']}) }}">
+                <img src="{{ el['image'] }}" alt="Изображение недоступно">
+            </a>
+            <div class="caption">
+                <a href="{{ path('eshop_good', {'cat': currentId, 'good': el['id']}) }}">
+                    <h3 class="text-center">{{ el['name'] }}</h3>
+                </a>
+                <div class="price">
+                    <span class="label label-default">{{ el['price'] }} P</span>
+                </div>
+                {# Кнопка 'В корзину' выводится только при наличии товара #}
+                {% if el['number'] > 0 %}
+                    <a href="#" class="btn btn-default cart" role="button">В Корзину</a>
+                {% else %}
+                    <span class="absent">Отсутствует</span>
+                {% endif %}
+            </div>
+        </div>
+
+    {% endfor %}
+
+</div>

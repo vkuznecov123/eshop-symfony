@@ -26,7 +26,7 @@ class Model
 
         } catch (\PDOException $e) {
             //die('База данных недоступна 1');
-            die('База данных недоступна');
+            die($e->getMessage());
         }
         $this->pdo = $pdo;
     }
@@ -40,7 +40,7 @@ class Model
 
         }
         catch(\PDOException $e) {
-            die('База данных недоступна');
+            die($e->getMessage());
         }
 
         $qres -> setFetchMode(\PDO::FETCH_ASSOC); // выбор формата получения результата
@@ -66,7 +66,7 @@ class Model
                                ORDER BY name;");
         }
         catch(\PDOException $e) {
-            die('База данных недоступна');
+            die($e->getMessage());
         }
 
         $qres -> setFetchMode(\PDO::FETCH_ASSOC); // выбор формата получения результата
@@ -90,7 +90,7 @@ class Model
                        WHERE Categories_id = $id ORDER BY name;");
         }
         catch(\PDOException $e) {
-            die('База данных недоступна');
+            die($e->getMessage());
         }
 
         $qres -> setFetchMode(\PDO::FETCH_ASSOC); // выбор формата получения результата
@@ -112,7 +112,7 @@ class Model
             $qres = $this->pdo -> query("SELECT * FROM Goods WHERE id = $goodId;"); // выбираем нужный товар из БД
         }
         catch(\PDOException $e) {
-            die('База данных недоступна');
+            die($e->getMessage());
         }
 
         $qres -> setFetchMode(\PDO::FETCH_ASSOC); // выбор формата получения результата
@@ -134,7 +134,7 @@ class Model
                                 ORDER BY priority DESC; "); // запрашиваем массив с характеристиками из БД
         }
         catch(\PDOException $e) {
-            die('База данных недоступна');
+            die($e->getMessage());
         }
 
         $qres -> setFetchMode(\PDO::FETCH_ASSOC); // выбор формата получения результата
