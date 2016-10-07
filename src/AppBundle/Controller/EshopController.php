@@ -13,12 +13,12 @@ class EshopController extends Controller
      */
     public function mainAction()
     {
-        $model = new \Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
+        $model = new \AppBundle\Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
         $model->connectDB();
 
         $tree = $model->getTree();
         $id = $tree['id'];
-        $renderAr = [ 'currentId' => $id,
+        $renderAr = [ 'currentId' => '',
                       'tree' => $tree ]; // массив данных для отправки шаблонизатору
         $renderAr['goods'] = $model->getMainGoods(); // добавляем массив товаров для главной страницы
 
@@ -32,7 +32,7 @@ class EshopController extends Controller
 
     public function catAction($cat)
     {
-        $model = new \Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
+        $model = new \AppBundle\Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
         $model->connectDB();
 
         $tree = $model->getTree();
@@ -50,7 +50,7 @@ class EshopController extends Controller
 
     public function goodAction($cat,$good)
     {
-        $model = new \Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
+        $model = new \AppBundle\Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
         $model->connectDB();
 
         $tree = $model->getTree();

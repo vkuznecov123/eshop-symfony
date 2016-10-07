@@ -1,5 +1,6 @@
 {# Путь к текущей категории #}
 <ol class="breadcrumb">
+    <li><a href="{{ path('eshop_main') }}">{{ 'Главная' }}</a></li>
     {# Отображаем ссылки на все категории до текущей #}
     {% for el in path if el != path|last %}
         <li><a href="{{ path('eshop_cat', {'cat': el['id']}) }}">{{ el['name'] }}</a></li>

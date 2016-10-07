@@ -1,5 +1,5 @@
 <?php
-namespace Model;
+namespace AppBundle\Model;
 class Model
 {
     private  $host;
@@ -61,7 +61,7 @@ class Model
     public function getMainGoods() {
 
         try {
-            $qres = $this->pdo -> query("SELECT id, name, price, number, image FROM Goods  
+            $qres = $this->pdo -> query("SELECT id, name, price, number, image, Categories_id FROM Goods  
                                INNER JOIN Main_goods ON id = Goods_id
                                ORDER BY name;");
         }
@@ -85,8 +85,8 @@ class Model
 
     public function getGoods($id) {
         try {
-           // делаем запрос к БД на товары в текущей категории
-            $qres = $this->pdo -> query("SELECT id, name, price, number, image FROM Goods  
+            // делаем запрос к БД на товары в текущей категории
+            $qres = $this->pdo -> query("SELECT id, name, price, number, image, Categories_id FROM Goods  
                        WHERE Categories_id = $id ORDER BY name;");
         }
         catch(\PDOException $e) {

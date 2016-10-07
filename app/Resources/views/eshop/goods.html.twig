@@ -6,11 +6,11 @@
 
         <div class="thumbnail myThumb">
             <!-- Ссылка на товар составляется из url + id текущей категории + id товара (good) -->
-            <a href="{{ path('eshop_good', {'cat': currentId, 'good': el['id']}) }}">
+            <a href="{{ path('eshop_good', {'cat': el['Categories_id'], 'good': el['id']}) }}">
                 <img src="{{ el['image'] }}" alt="Изображение недоступно">
             </a>
             <div class="caption">
-                <a href="{{ path('eshop_good', {'cat': currentId, 'good': el['id']}) }}">
+                <a href="{{ path('eshop_good', {'cat': el['Categories_id'], 'good': el['id']}) }}">
                     <h3 class="text-center">{{ el['name'] }}</h3>
                 </a>
                 <div class="price">
