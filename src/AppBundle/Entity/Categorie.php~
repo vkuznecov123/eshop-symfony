@@ -1,0 +1,35 @@
+<?php
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Categories")
+ */
+
+class Categorie
+{
+    /**
+     * @ORM\Column(type="smallint", unique=true, options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $name;
+    /**
+     * @ORM\Column(type="smallint", options={"unsigned"=true})
+     */
+    private $parentId;
+    /**
+     * @ORM\Column(type="smallint", options={"unsigned"=true})
+     */
+    private $level;
+    /**
+     * @ORM\Column(type="smallint", options={"unsigned"=true})
+     */
+    private $position;
+}

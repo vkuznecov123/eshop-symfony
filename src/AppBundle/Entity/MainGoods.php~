@@ -1,0 +1,24 @@
+<?php
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+  * @ORM\Entity
+  * @ORM\Table(name="Main_goods")
+ */
+
+class MainGoods
+{
+    /**
+     * @ORM\Column(name="Main_id", type="integer", unique=true, options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     */
+    protected $mainId;
+    /**
+     * @ORM\OneToOne(targetEntity="Good")
+     * @ORM\JoinColumn(name="Goods_id", referencedColumnName="id", unique=true)
+     */
+    protected $goodsId;
+}

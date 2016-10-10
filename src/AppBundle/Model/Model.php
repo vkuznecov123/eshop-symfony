@@ -1,5 +1,7 @@
 <?php
 namespace AppBundle\Model;
+use AppBundle\Entity\Good;
+
 class Model
 {
     private  $host;
@@ -152,12 +154,12 @@ class Model
 
 // Функция для получение пути к категории (товару) и подкатегорий
 
-    public function getPathSubcats (array &$tree, $id, &$good = NULL) {
+    public function getPathSubcats (TreeNode $tree, $id,Good $good = NULL) {
         $path=[]; // путь к текущей категории
         $subcats=[];  // дочерние категории для текущей
 
         if (isset($good)) {                // если находимся на странице с товаром
-            $id = $good['Categories_id'];  // ищем путь к категории товара
+            $id = $good->getCategoriesId();  // ищем путь к категории товара
         }
 
         $this->findPath($tree,$id,$path,$subcats); // поиск пути к текущей категории и ее дочерних категорий
@@ -173,7 +175,7 @@ class Model
 
 // Рекурсивная функция поиска пути к заданной категории и ee дочерних категорий
 
-    public function findPath(array &$tree, $id, array &$path, array &$subcats){
+    public function findPath(TreeNode $tree, $id, array &$path, array &$subcats){
         if (in_array($id,$tree)) {                                          // элемент найден
             array_unshift($path,['name'=>$tree['name'],'id'=>$tree['id']]);   // запись в массив найденной категории
             for($i=0;$i<count($tree)-2;$i++) {

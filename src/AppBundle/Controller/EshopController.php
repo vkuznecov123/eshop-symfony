@@ -12,7 +12,7 @@ class EshopController extends Controller
      * @Route("/", name="eshop_main")
      */
     public function mainAction()
-    {
+    {/*
         $model = new \AppBundle\Model\Model('127.0.0.1','eshop','eshopSymfony','pa$$w0rd');
         $model->connectDB();
 
@@ -27,7 +27,29 @@ class EshopController extends Controller
         $renderAr['subcats'] = $pathAndSubcats['subcats'];
 
         return $this->render('eshop/main_page.html.twig', $renderAr);
+*/
+        $em = $this->getDoctrine()->getManager();
+        $tree = $em->getRepository('AppBundle:Category')
+            ->getTree();
+        //print_r($tree);
+        $goods = $em->getRepository('AppBundle:Good')
+            ->findByCategoriesId(2);
+        //var_dump($goods);
+        $mainGoods = $em->getRepository('AppBundle:Good')
+            ->getMainGoods();
+        //var_dump($mainGoods);
+       // $chars = $em->getRepository('AppBundle:Good')
+       //     ->getCharsById(2,10);
 
+        $finder = $this->get('app.pathAndSubcatsFinder');
+        $finder -> getPath();
+
+        $good = $em->getRepository('AppBundle:Good')
+            ->findOneById(15);
+        var_dump($good);
+        echo('<br><br>');
+        $chars = $this->get('app.charsGetter')->getGoodChars($good);
+        var_dump($chars);
     }
 
     public function catAction($cat)

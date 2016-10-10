@@ -1,0 +1,42 @@
+<?php
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\GoodRepository")
+ * @ORM\Table(name="Goods")
+ */
+class Good
+{
+    /**
+     * @ORM\Column(type="int", unique=true, options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="smallint", options={"unsigned"=true})
+     */
+    private $categorie_id;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $name;
+    /**
+     * @ORM\Column(type="int", options={"unsigned"=true})
+     */
+    private $price;
+    /**
+     * @ORM\Column(type="int", options={"unsigned"=true})
+     */
+    private $number;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $manufacturer;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
+}

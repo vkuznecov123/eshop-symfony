@@ -7,3 +7,9 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.pathAndSubcatsFinder:
+        class: AppBundle\Services\PathAndSubcatsFinder
+
+    app.charsGetter:
+        class: AppBundle\Services\CharsGetter
+        arguments: [@doctrine.dbal.default_connection]
